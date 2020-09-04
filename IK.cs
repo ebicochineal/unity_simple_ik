@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IK : MonoBehaviour {
     public Transform target;
-    [Range(1, 1024)] public int iteration = 512;
+    [Range(1, 1024)] public int iteration = 64;
     [Range(1, 32)] public int chain = 1;
     
     List<Quaternion> rotations = new List<Quaternion>();
@@ -33,7 +33,7 @@ public class IK : MonoBehaviour {
                 Vector3 b = this.transform.position - t.position;
                 // a.Normalize();
                 // b.Normalize();
-                float p = 0.025f * (j+1);
+                float p = 0.1f * (j+1);
                 t.localRotation *= Quaternion.AngleAxis(-Vector3.Angle(a, b) * p, t.InverseTransformDirection(Vector3.Cross(a, b)));
             }
         }
