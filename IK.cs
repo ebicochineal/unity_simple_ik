@@ -5,7 +5,7 @@ using UnityEngine;
 public class IK : MonoBehaviour {
     public Transform target;
     [Range(1, 1024)] public int iteration = 64;
-    [Range(1, 32)] public int chain = 1;
+    [Range(1, 64)] public int chain = 1;
     List<Quaternion> rotations = new List<Quaternion>();
     
     void Start () {
