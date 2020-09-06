@@ -16,9 +16,8 @@ public class IK : MonoBehaviour {
         }
     }
     
-    void Update () {
-        this.ResetLocalRotation();
-        
+    void LateUpdate () {
+        this.ResetLocalRotations();
         float n = (1f / this.chain) * 0.25f;
         for (int i = 0; i < this.iteration; ++i) {
             Transform t = this.transform;
@@ -32,7 +31,7 @@ public class IK : MonoBehaviour {
         }
     }
     
-    void ResetLocalRotation () {
+    void ResetLocalRotations () {
         Transform t = this.transform;
         for (int i = 0; i < this.chain; ++i) {
             t = t.parent;
