@@ -19,5 +19,8 @@ IKターゲットなどに追加すれば小さなキューブを表示できる
 ゲーミングな感じのDrawBones  
 再生中とエディタのカメラを動かしたときのみ光る  
 
+#### GLGamingDrawBones
+ゲーミングな感じのDrawBonesをGizmoではなくGLで描画するので実行形式ファイルにした時も表示できる  
+
 #### GamingColor
 GamingDrawBonesで使う  
