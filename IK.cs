@@ -6,6 +6,7 @@ public class IK : MonoBehaviour {
     public Transform target;
     [Range(1, 1024)] public int iteration = 64;
     [Range(1, 64)] public int chain = 1;
+    [Range(0f, 1f)] public float breakdist = 0.05f;
     List<Quaternion> rotations = new List<Quaternion>();
     
     void Start () {
@@ -21,6 +22,7 @@ public class IK : MonoBehaviour {
         float n = (1f / this.chain) * 0.25f;
         for (int i = 0; i < this.iteration; ++i) {
             Transform t = this.transform;
+            if (Vector3.Distance(this.target.position, this.transform.position) < this.breakdist) { return; }
             for (int j = 0; j < this.chain; ++j) {
                 t = t.parent;
                 Vector3 a = this.target.position - t.position;
