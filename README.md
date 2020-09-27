@@ -1,10 +1,11 @@
-## Unity Simple IK (Inverse Kinematics)
-
-#### IK
+## Unity Simple IK (Inverse Kinematics)  
+---
+#### IK  
 動かしたい子ボーンに追加して使う  
 target このオブジェクトの方にボーンを伸ばす  
 chain 影響範囲  
 iteration 反復回数  
+
 ---
 #### AxisIK
 動かせる軸を制限できるIK  
