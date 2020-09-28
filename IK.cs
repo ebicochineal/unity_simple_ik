@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class IK : MonoBehaviour {
     public bool drawchain = true;
+    public bool reset = true;
     public Transform target;
     [Range(1, 1024)] public int iteration = 64;
     [Range(1, 64)] public int chain = 1;
@@ -19,7 +20,7 @@ public class IK : MonoBehaviour {
     }
     
     void LateUpdate () {
-        this.ResetLocalRotations();
+        if (this.reset) { this.ResetLocalRotations(); }
         float n = (1f / this.chain) * 0.25f;
         for (int i = 0; i < this.iteration; ++i) {
             Transform t = this.transform;

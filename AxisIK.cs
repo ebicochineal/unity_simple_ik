@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class AxisIK : MonoBehaviour {
     public bool drawchain = true;
+    public bool reset = true;
     public Transform target;
     [Range(1, 1024)] public int iteration = 64;
     [Range(1, 64)] public int chain = 1;
     [Range(0f, 1f)] public float breakdist = 0.05f;
     List<Quaternion> rotations = new List<Quaternion>();
     List<Axis> axiss = new List<Axis>();
+    
     void Start () {
         Transform t = this.transform;
         for (int i = 0; i < this.chain; ++i) {
@@ -26,7 +28,8 @@ public class AxisIK : MonoBehaviour {
     }
     
     void LateUpdate () {
-        this.ResetLocalRotations();
+        if (this.reset) { this.ResetLocalRotations(); }
+        
         float n = (1f / this.chain) * 0.25f;
         for (int i = 0; i < this.iteration; ++i) {
             Transform t = this.transform;
@@ -55,7 +58,7 @@ public class AxisIK : MonoBehaviour {
                         b = new Vector3(b.x, b.y, 0f);
                         o = new Vector3(o.x, o.y, 0f);
                     }
-                    t.localRotation *= Quaternion.AngleAxis(-Vector3.Angle(a, b) * p, Vector3.Cross(a, b));
+                    t.localRotation *= Quaternion.AngleAxis(Vector3.Angle(a, b) * p, -Vector3.Cross(a, b));
                 }
             }
         }
