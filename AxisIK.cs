@@ -58,7 +58,7 @@ public class AxisIK : MonoBehaviour {
                         b = new Vector3(b.x, b.y, 0f);
                         o = new Vector3(o.x, o.y, 0f);
                     }
-                    t.localRotation *= Quaternion.AngleAxis(Vector3.Angle(a, b) * p, -Vector3.Cross(a, b));
+                    t.localRotation *= Quaternion.AngleAxis(-Vector3.Angle(a, b) * p, Vector3.Cross(a, b));
                 }
             }
         }
